@@ -19,7 +19,7 @@ namespace ExampleJwtApp.Back.Infrastracture.Tools
             claims.Add(new Claim(ClaimTypes.Name, dto.Username));
             claims.Add(new Claim(ClaimTypes.NameIdentifier, dto.Id.ToString()));
 
-            var expireDate = DateTime.UtcNow.AddMinutes(1);
+            var expireDate = DateTime.UtcNow.AddDays(1);
             JwtSecurityToken token = new JwtSecurityToken
                 (issuer: JwtTokenSettings.Issuer, audience: JwtTokenSettings.Audience, claims: claims, notBefore: DateTime.UtcNow,
                 expires: expireDate/*DateTime.UtcNow.AddDays(JwtTokenSettings.Expire)*/, signingCredentials: credentials);
